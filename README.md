@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+It demonstrates some of the basic features of a **Flow Dapp** using **FCL**
+
 ## Getting Started
 
 First, run the development server:
@@ -12,13 +14,32 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Check the console output for useful logs and transaction status.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+
+## FCL Local Development
+
+Use `npm link` to install local packages
+- `npm link ../path-to-fcl/fcl-js/packages/*`
+
+From `../path-to-fcl/fcl-js/packages/fcl`
+- `npm run start`
+
 ## Learn More
+
+To learn more about FCL, take a look at the following resources:
+- [FCL DOCS Home](https://docs.onflow.org/fcl/)
+- [Flow Developer Onboarding Guide](https://docs.onflow.org/dapp-development/)
+- [Flow App Quickstart](https://github.com/onflow/fcl-js/blob/master/docs/tutorials/flow-app-quickstart.mdx)
+- [FCL API Quick Reference](https://github.com/onflow/fcl-js/blob/master/docs/reference/api.md)
+- [More on Scripts](https://github.com/onflow/fcl-js/blob/master/docs/reference/scripts.mdx)
+- [More on Transactions](https://github.com/onflow/fcl-js/blob/master/docs/reference/transactions.mdx)
+- [User Signatures](https://github.com/onflow/fcl-js/blob/master/docs/reference/user-signatures.mdx)
+- [Proving Account Ownership](https://github.com/onflow/fcl-js/blob/master/docs/reference/proving-authentication.mdx)
 
 To learn more about Next.js, take a look at the following resources:
 
