@@ -22,13 +22,11 @@ fcl.config()
 if (USE_LOCAL) {
   // prettier-ignore
   fcl
-    .config()
-    .put("env", "local")
+ 
     .put("debug.accounts", true)
     .put("logger.level", 2)
     .put("accessNode.api", "http://localhost:8888")
     .put("discovery.wallet", "http://localhost:8701/fcl/authn")
-    .put("0xFCLCryptoContract", FCL_CRYPTO_CONTRACT_ADDR)
 } else {
   // prettier-ignore
   fcl
@@ -36,13 +34,15 @@ if (USE_LOCAL) {
     //.put("debug.accounts", true)
     .put("logger.level", 2)
     // testnet
-    .put("env", "testnet")
-    .put("accessNode.api", "https://rest-testnet.onflow.org")
-    .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
+    //.put("env", "testnet")
+    //.put("flow.network", "testnet")
+    //.put("accessNode.api", "https://rest-testnet.onflow.org")
+    //.put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
   // mainnet
   //.put("env", "mainnet")
-  //.put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
-  //.put("accessNode.api", "https://rest-mainnet.onflow.org")
+  .put("flow.network", "mainnet")
+  .put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
+  .put("accessNode.api", "https://rest-mainnet.onflow.org")
   // Discovery API
   //.put("discovery.authn.include", ["0x9d2e44203cb13051"])
   //.put("discovery.authn.endpoint", "https://fcl-discovery.onflow.org/api/testnet/authn")
@@ -51,5 +51,5 @@ if (USE_LOCAL) {
   // "discovery.wallet","https://staging.accounts.meetdapper.com/fcl/authn-restricted")
   // .put("discovery.wallet.method", "POP/RPC")
   // .put("discovery.wallet","https://graphql-api.staging.app.dapperlabs.com/fcl/authn")
-  //.put("discovery.wallet.method", "HTTP/POST")
+  // .put("discovery.wallet.method", "HTTP/POST")
 }

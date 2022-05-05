@@ -14,8 +14,8 @@ export const CMD = async () => {
   const accountProofService = serviceOfType(res.services, "account-proof")
   if (accountProofService) {
     const fclCryptoContract =
-      (await config.first(["env", "local"])) === "local"
-        ? await config.get("0xFCLCryptoContract")
+      (await config.first(["env", "flow.network"])) === "local"
+        ? process.env.NEXT_PUBLIC_FCL_CRYPTO_CONTRACT
         : null
 
     const verified = await fcl.AppUtils.verifyAccountProof(
@@ -23,6 +23,7 @@ export const CMD = async () => {
       accountProofService.data,
       {fclCryptoContract}
     )
+    console.log("verified client:", verified)
 
     const res = await fetch("/api/verify", {
       method: "POST",
@@ -31,7 +32,7 @@ export const CMD = async () => {
       },
       body: JSON.stringify(accountProofService.data),
     })
-    console.log(await res.json())
+    console.log("verified server:", await res.json())
   }
   return res
 }

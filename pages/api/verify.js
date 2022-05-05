@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   const body = req.body
 
   const fclCryptoContract =
-    (await config.first(["env", "network"])) === "local"
-      ? await config.get("0xFCLCryptoContract")
+    (await config.first(["env", "flow.network"])) === "local"
+      ? process.env.FCL_CRYPTO_CONTRACT
       : null
 
   if (req.method !== "POST") {
@@ -19,5 +19,5 @@ export default async function handler(req, res) {
     fclCryptoContract,
   })
 
-  res.status(200).json({verifiedAccount: verified})
+  res.status(200).json(verified)
 }
