@@ -25,6 +25,7 @@ if (USE_LOCAL) {
     .config()
     .put("debug.accounts", true)
     .put("logger.level", 2)
+    .put("flow.network", "local")
     .put("accessNode.api", "http://localhost:8888")
     .put("discovery.wallet", "http://localhost:8701/fcl/authn")
 } else {
