@@ -36,20 +36,19 @@ if (USE_LOCAL) {
     .put("logger.level", 2)
     // testnet
     //.put("env", "testnet")
-    //.put("flow.network", "testnet")
-    //.put("accessNode.api", "https://rest-testnet.onflow.org")
-    //.put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
+    .put("flow.network", "testnet")
+    .put("accessNode.api", "https://rest-testnet.onflow.org")
+    .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
   // mainnet
   //.put("env", "mainnet")
-  .put("flow.network", "mainnet")
-  .put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
-  .put("accessNode.api", "https://rest-mainnet.onflow.org")
+  //.put("flow.network", "mainnet")
+  //.put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
+  //.put("accessNode.api", "https://rest-mainnet.onflow.org")
   // Discovery API
   //.put("discovery.authn.include", ["0x9d2e44203cb13051"])
   //.put("discovery.authn.endpoint", "https://fcl-discovery.onflow.org/api/testnet/authn")
   // Dapper Wallet
-  // .put(
-  // "discovery.wallet","https://staging.accounts.meetdapper.com/fcl/authn-restricted")
+  // .put("discovery.wallet","https://staging.accounts.meetdapper.com/fcl/authn-restricted")
   // .put("discovery.wallet.method", "POP/RPC")
   // .put("discovery.wallet","https://graphql-api.staging.app.dapperlabs.com/fcl/authn")
   // .put("discovery.wallet.method", "HTTP/POST")
