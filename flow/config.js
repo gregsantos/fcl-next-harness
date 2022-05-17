@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import getConfig from "next/config"
 
-const USE_LOCAL = true
+const USE_LOCAL = false
 const resolver = async () => ({
   appIdentifier: "Awesome App (v0.0)",
   nonce: "3037366134636339643564623330316636626239323161663465346131393662",
@@ -32,24 +32,23 @@ if (USE_LOCAL) {
   // prettier-ignore
   fcl
     .config()
-    //.put("debug.accounts", true)
     .put("logger.level", 2)
     // testnet
-    //.put("env", "testnet")
     .put("flow.network", "testnet")
     .put("accessNode.api", "https://rest-testnet.onflow.org")
     .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
   // mainnet
-  //.put("env", "mainnet")
-  //.put("flow.network", "mainnet")
-  //.put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
-  //.put("accessNode.api", "https://rest-mainnet.onflow.org")
+  // .put("env", "mainnet")
+  // .put("flow.network", "mainnet")
+  // .put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
+  // .put("accessNode.api", "https://rest-mainnet.onflow.org")
   // Discovery API
-  //.put("discovery.authn.include", ["0x9d2e44203cb13051"])
-  //.put("discovery.authn.endpoint", "https://fcl-discovery.onflow.org/api/testnet/authn")
+  // .put("discovery.authn.include", ["0x9d2e44203cb13051"])
+  // .put("discovery.authn.endpoint", "https://fcl-discovery.onflow.org/api/testnet/authn")
   // Dapper Wallet
   // .put("discovery.wallet","https://staging.accounts.meetdapper.com/fcl/authn-restricted")
   // .put("discovery.wallet.method", "POP/RPC")
   // .put("discovery.wallet","https://graphql-api.staging.app.dapperlabs.com/fcl/authn")
   // .put("discovery.wallet.method", "HTTP/POST")
+  // .put("discovery.wallet","https://graphql-api.app.dapperlabs.com/fcl/authn")
 }
