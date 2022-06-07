@@ -1,6 +1,5 @@
 import * as fcl from "@onflow/fcl"
 import {Buffer} from "buffer"
-import {config} from "@onflow/config"
 
 const toHexStr = str => {
   return Buffer.from(str).toString("hex")
@@ -10,7 +9,7 @@ export const LABEL = "User Sign & Verify"
 export const CMD = async () => {
   const MSG = toHexStr("FOO")
   const fclCryptoContract =
-    (await config.first(["env", "flow.network"])) === "local"
+    (await fcl.config.first(["env", "flow.network"])) === "local"
       ? process.env.NEXT_PUBLIC_FCL_CRYPTO_CONTRACT
       : null
 

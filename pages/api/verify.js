@@ -1,12 +1,11 @@
 import * as fcl from "@onflow/fcl"
-import {config} from "@onflow/config"
 
 const APP_IDENTIFIER = "Awesome App (v0.0)"
 export default async function handler(req, res) {
   const body = req.body
 
   const fclCryptoContract =
-    (await config.first(["env", "flow.network"])) === "local"
+    (await fcl.config.first(["env", "flow.network"])) === "local"
       ? process.env.FCL_CRYPTO_CONTRACT
       : null
 

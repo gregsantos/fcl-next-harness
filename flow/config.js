@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import getConfig from "next/config"
 
-const USE_LOCAL = false
+const USE_LOCAL = true
 const resolver = async () => ({
   appIdentifier: "Awesome App (v0.0)",
   nonce: "3037366134636339643564623330316636626239323161663465346131393662",
@@ -12,12 +12,22 @@ const FCL_CRYPTO_CONTRACT_ADDR =
   process.env.NEXT_PUBLIC_FCL_CRYPTO_CONTRACT ||
   publicRuntimeConfig.fclCryptoContract
 
+const isServerSide = () => typeof window === "undefined"
+const LOCAL_STORAGE = {
+  can: !isServerSide(),
+  get: async key => JSON.parse(localStorage.getItem(key)),
+  put: async (key, value) => localStorage.setItem(key, JSON.stringify(value)),
+}
+
 // prettier-ignore
-fcl.config()
+fcl
+  .config()
   .put("app.detail.title", "Test Harness")
   .put("app.detail.icon", "https://placekitten.com/g/200/200")
-  .put("service.OpenID.scopes", "email")
+  .put("service.OpenID.scopes", "email") 
   .put("fcl.accountProof.resolver", resolver)
+//.put("fcl.storage", LOCAL_STORAGE)
+//.put("discovery.wallet.method", "POP/RPC")
 
 if (USE_LOCAL) {
   // prettier-ignore

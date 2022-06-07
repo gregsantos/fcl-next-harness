@@ -1,5 +1,4 @@
 import * as fcl from "@onflow/fcl"
-import {config} from "@onflow/config"
 import {yup, nope, serviceOfType} from "../util"
 
 export const LABEL = "Log In"
@@ -14,7 +13,7 @@ export const CMD = async () => {
   const accountProofService = serviceOfType(res.services, "account-proof")
   if (accountProofService) {
     const fclCryptoContract =
-      (await config.first(["env", "flow.network"])) === "local"
+      (await fcl.config.first(["env", "flow.network"])) === "local"
         ? process.env.NEXT_PUBLIC_FCL_CRYPTO_CONTRACT
         : null
 
