@@ -1,5 +1,5 @@
-import {mutate} from "@onflow/fcl"
-import {yup, nope} from "../util"
+import { mutate } from "@onflow/fcl"
+import { yup, nope } from "../util"
 
 export const LABEL = "Mutate 1 (no args)"
 export const CMD = async () => {

@@ -1,5 +1,5 @@
-import {query} from "@onflow/fcl"
-import {yup, nope} from "../util"
+import { query } from "@onflow/fcl"
+import { yup, nope } from "../util"
 
 export const LABEL = "Query 1 (no args)"
 export const CMD = async () => {

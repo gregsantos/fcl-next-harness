@@ -1,5 +1,5 @@
 import * as fcl from "@onflow/fcl"
-import {yup, nope, serviceOfType} from "../util"
+import { yup, nope, serviceOfType } from "../util"
 
 export const LABEL = "Log In"
 export const CMD = async () => {
@@ -20,7 +20,7 @@ export const CMD = async () => {
     const verified = await fcl.AppUtils.verifyAccountProof(
       "Awesome App (v0.0)",
       accountProofService.data,
-      {fclCryptoContract}
+      { fclCryptoContract }
     )
     console.log("verified client:", verified)
 

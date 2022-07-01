@@ -1,5 +1,5 @@
 import * as fcl from "@onflow/fcl"
-import {Buffer} from "buffer"
+import { Buffer } from "buffer"
 
 const toHexStr = str => {
   return Buffer.from(str).toString("hex")

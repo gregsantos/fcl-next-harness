@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 import * as fcl from "@onflow/fcl"
 
 export default function useCurrentUser() {

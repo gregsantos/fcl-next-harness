@@ -1,6 +1,6 @@
-import {useEffect} from "react"
+import { useEffect } from "react"
 import "../flow/config"
-import {COMMANDS} from "../cmds"
+import { COMMANDS } from "../cmds"
 import useCurrentUser from "../hooks/use-current-user"
 import useConfig from "../hooks/use-config"
 
@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div>
       <ul>{COMMANDS.map(renderCommand)}</ul>
-      <pre>{JSON.stringify({currentUser, config}, null, 2)}</pre>
+      <pre>{JSON.stringify({ currentUser, config }, null, 2)}</pre>
     </div>
   )
 }

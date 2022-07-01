@@ -1,6 +1,6 @@
-import {currentUser} from "@onflow/fcl"
-import {Buffer} from "buffer"
-import {yup, nope} from "../util"
+import { currentUser } from "@onflow/fcl"
+import { Buffer } from "buffer"
+import { yup, nope } from "../util"
 
 export const LABEL = "User Sign 1 (No Verification)"
 export const CMD = async () => {
