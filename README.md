@@ -4,22 +4,32 @@ It demonstrates some of the basic features of a **Flow Dapp** using **FCL**
 
 ## Getting Started
 
-First, run the development server:
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Check the console output for useful logs and transaction status.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Deploy Contracts to Emulator
+
+For local development you can deploy contracts to the Flow emulator.
+Add them to `flow.json` and run:
+
+```js
+flow project deploy --network=emulator
+```
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/verify](http://localhost:3000/api/verify).
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
 
 ## FCL Local Development
 

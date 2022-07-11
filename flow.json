@@ -1,0 +1,27 @@
+{
+  "emulators": {
+    "default": {
+      "port": 3569,
+      "serviceAccount": "emulator-account"
+    }
+  },
+  "contracts": {
+    "FCLCrypto": "./flow/cadence/contracts/FCLCrypto.cdc"
+  },
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "mainnet": "access.mainnet.nodes.onflow.org:9000",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "emulator-account": {
+      "address": "f8d6e0586b0a20c7",
+      "key": "28b9aa18adda109686c9d4937a58e4b3044ab57bac55679b1050ef9898bf4bba"
+    }
+  },
+  "deployments": {
+    "emulator": {
+      "emulator-account": ["FCLCrypto"]
+    }
+  }
+}
