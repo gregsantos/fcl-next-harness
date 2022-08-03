@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:deploy": "flow project deploy --network=emulator --update && npm run dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -8,6 +8,12 @@ It demonstrates some of the basic features of a **Flow Dapp** using **FCL**
 npm install
 ```
 
+When your [emulator](https://docs.onflow.org/flow-cli/start-emulator/) is running, deploy required contracts from the cadence directory with the following:
+
+```bash
+flow project deploy --network=emulator
+```
+
 Run the development server:
 
 ```bash
@@ -18,10 +24,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Check the console output for useful logs and transaction status.
 
+**Note:** You can also deploy contract and start the harness with the following command:
+
+```bash
+npm run dev:deploy
+```
+
 ### Deploy Contracts to Emulator
 
-For local development you can deploy contracts to the Flow emulator.
-Add them to `flow.json` and run:
+If you have any additional contracts that need deploying to the Flow emulator, add them to `flow.json` and run:
 
 ```js
 flow project deploy --network=emulator
