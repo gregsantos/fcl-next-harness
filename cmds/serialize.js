@@ -1,5 +1,6 @@
 import * as fcl from "@onflow/fcl"
 import { yup, nope } from "../util"
+import { encodeTransactionPayload } from "../utils"
 
 export const LABEL = "Serialize"
 export const CMD = async () => {
@@ -19,4 +20,13 @@ export const CMD = async () => {
     ])
     .then(yup("US-1"))
     .catch(nope("US-1"))
+
+  try {
+    console.log(
+      "Encoded voucher",
+      encodeTransactionPayload(JSON.parse(voucher))
+    )
+  } catch (error) {
+    console.error("Error encoding voucher", error)
+  }
 }
