@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import getConfig from "next/config"
 
-const USE_LOCAL = false
+const USE_LOCAL = true
 const resolver = async () => ({
   appIdentifier: "Awesome App (v0.0)",
   nonce: "3037366134636339643564623330316636626239323161663465346131393662",
@@ -28,6 +28,10 @@ fcl
   .put("app.detail.icon", "https://placekitten.com/g/200/200")
   .put("service.OpenID.scopes", "email")
   .put("fcl.accountProof.resolver", resolver)
+  .put(
+    "discovery.authn.endpoint",
+    "https://fcl-discovery.onflow.org/api/testnet/authn"
+  )
 //.put("fcl.storage", LOCAL_STORAGE)
 //.put("discovery.wallet.method", "POP/RPC")
 
@@ -47,13 +51,8 @@ if (USE_LOCAL) {
     .put("flow.network", "testnet")
     .put("accessNode.api", "https://rest-testnet.onflow.org") // grpc: https://access-testnet.onflow.org
     .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
-    // .put("discovery.wallet", "http://localhost:3000/testnet/authn")
-    // .put("discovery.authn.include", ["0x82ec283f88a62e65"])
-    .put(
-      "discovery.authn.endpoint",
-      "https://fcl-discovery.onflow.org/api/testnet/authn"
-    )
-
+  // .put("discovery.wallet", "http://localhost:3000/testnet/authn")
+  // .put("discovery.authn.include", ["0x82ec283f88a62e65"])
   // mainnet
   // .put("flow.network", "mainnet")
   // .put("accessNode.api", "https://rest-mainnet.onflow.org")

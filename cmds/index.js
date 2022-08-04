@@ -6,5 +6,6 @@ import * as M1 from "./m1"
 import * as M2 from "./m2"
 import * as US1 from "./us1"
 import * as US2 from "./us2"
+import * as SERIALIZE from "./serialize"
 
-export const COMMANDS = [LOGIN, LOGOUT, Q1, Q2, M1, M2, US1, US2]
+export const COMMANDS = [LOGIN, LOGOUT, Q1, Q2, M1, M2, US1, US2, SERIALIZE]
