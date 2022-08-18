@@ -4,6 +4,15 @@ import "../flow/config"
 import { COMMANDS } from "../cmds"
 import useCurrentUser from "../hooks/use-current-user"
 import useConfig from "../hooks/use-config"
+import { initFclWc } from "@onflow/fcl-wc"
+
+const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID
+const WC_METADATA = {
+  name: "FCL WalletConnect",
+  description: "FCL DApp for WalletConnect",
+  url: "https://flow.com/",
+  icons: ["https://avatars.githubusercontent.com/u/62387156?s=280&v=4"],
+}
 
 const renderCommand = d => {
   return (
@@ -17,6 +26,17 @@ export default function Home() {
   const currentUser = useCurrentUser()
   const config = useConfig()
   const [services, setServices] = useState([])
+
+  useEffect(() => {
+    const initAdapter = async () => {
+      const { FclWcServicePlugin } = await initFclWc({
+        projectId: WC_PROJECT_ID,
+        metadata: WC_METADATA,
+      })
+      fcl.pluginRegistry.add(FclWcServicePlugin)
+    }
+    initAdapter()
+  }, [])
 
   useEffect(() => {
     const fetchServices = async () =>

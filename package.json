@@ -10,7 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@onflow/fcl": "^1.2.0",
+    "@onflow/fcl": "^1.2.1-alpha.0",
+    "@onflow/fcl-wc": "^0.1.0",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0"
