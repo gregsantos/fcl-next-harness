@@ -17,6 +17,7 @@ export default function Home() {
   const currentUser = useCurrentUser()
   const config = useConfig()
   const [services, setServices] = useState([])
+  const [network, setNetwork] = useState("")
 
   useEffect(() => {
     const fetchServices = async () =>
@@ -31,8 +32,16 @@ export default function Home() {
     require("../decorate")
   }, [])
 
+  useEffect(() => {
+    const getNetwork = async () => {
+      setNetwork(await fcl.config.first(["flow.network.default"]))
+    }
+    getNetwork()
+  }, [config])
+
   return (
     <div>
+      <h1>Network: {network}</h1>
       <ul>{COMMANDS.map(renderCommand)}</ul>
       <div>
         {services?.map(service => (
