@@ -1,10 +1,10 @@
 import * as fcl from "@onflow/fcl"
-import { useState, useEffect } from "react"
-import "../flow/config"
-import { COMMANDS } from "../cmds"
 import useCurrentUser from "../hooks/use-current-user"
 import useConfig from "../hooks/use-config"
+import { useState, useEffect } from "react"
+import { COMMANDS } from "../cmds"
 import { initFclWc } from "@onflow/fcl-wc"
+import "../flow/config"
 
 const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID
 const WC_METADATA = {

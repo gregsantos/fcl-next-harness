@@ -1,16 +1,10 @@
 import * as fcl from "@onflow/fcl"
-import getConfig from "next/config"
 
 const USE_LOCAL = false
 const resolver = async () => ({
   appIdentifier: "Awesome App (v0.0)",
   nonce: "3037366134636339643564623330316636626239323161663465346131393662",
 })
-const { publicRuntimeConfig } = getConfig()
-
-const FCL_CRYPTO_CONTRACT_ADDR =
-  process.env.NEXT_PUBLIC_FCL_CRYPTO_CONTRACT ||
-  publicRuntimeConfig.fclCryptoContract
 
 const isServerSide = () => typeof window === "undefined"
 const LOCAL_STORAGE = {
@@ -28,11 +22,6 @@ fcl
   .put("app.detail.icon", "https://placekitten.com/g/200/200")
   .put("service.OpenID.scopes", "email")
   .put("fcl.accountProof.resolver", resolver)
-  .put(
-    "discovery.authn.endpoint",
-    "https://fcl-discovery.onflow.org/api/testnet/authn"
-  )
-//.put("discovery.authn.endpoint", "http://localhost:3002/api/testnet/authn")
 //.put("fcl.storage", LOCAL_STORAGE)
 
 if (USE_LOCAL) {
@@ -54,19 +43,32 @@ if (USE_LOCAL) {
     .put("flow.network", "testnet")
     .put("accessNode.api", "https://rest-testnet.onflow.org") // grpc: https://access-testnet.onflow.org
     //.put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
+/*     .put(
+      "discovery.authn.endpoint",
+      "https://fcl-discovery.onflow.org/api/testnet/authn"
+    ) */
     // local discovery
-    .put("discovery.wallet", "http://localhost:3002/testnet/authn")
-    .put("discovery.authn.include", [
+    /*     .put("discovery.wallet", "http://localhost:3002/testnet/authn")
+    .put("discovery.authn.endpoint", "http://localhost:3002/api/testnet/authn") */
+    // staging discovery
+    .put(
+      "discovery.wallet",
+      "https://fcl-discovery-git-gsantos-wc-onflow.vercel.app/testnet/authn"
+    )
+    .put(
+      "discovery.authn.endpoint",
+      "https://fcl-discovery-git-gsantos-wc-onflow.vercel.app/api/testnet/authn"
+    )
+  /*.put("discovery.authn.include", [
       "0x82ec283f88a62e65",
       "0xead892083b3e2c6c",
-    ])
+    ]) */
   // mainnet
   // .put("flow.network", "mainnet")
   // .put("accessNode.api", "https://rest-mainnet.onflow.org")
   // .put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
   // Discovery API
-  // .put("discovery.authn.include", ["0x82ec283f88a62e65"])
-  // .put("discovery.authn.endpoint","https://fcl-discovery.onflow.org/api/testnet/authn")
+  // .put("discovery.authn.endpoint","https://fcl-discovery.onflow.org/api/mainnet/authn")
   // Dapper Wallet
   // .put("discovery.wallet","https://staging.accounts.meetdapper.com/fcl/authn-restricted")
   // .put("discovery.wallet.method", "POP/RPC")
