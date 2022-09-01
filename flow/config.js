@@ -31,38 +31,29 @@ if (USE_LOCAL) {
     .put("flow.network", "local")
     .put("accessNode.api", "http://localhost:8888")
     // dev-wallet
-    // .put("discovery.wallet", "http://localhost:8701/fcl/authn")
-    // local discovery
-    .put("discovery.wallet", "http://localhost:3002/testnet/authn")
+    .put("discovery.wallet", "http://localhost:8701/fcl/authn")
+  // local discovery
+  //.put("discovery.wallet", "http://localhost:3002/testnet/authn")
+  //.put("discovery.authn.endpoint", "http://localhost:3002/api/testnet/authn")
 } else {
   // prettier-ignore
   fcl
     .config()
-    .put("logger.level", 2)
     // testnet
     .put("flow.network", "testnet")
     .put("accessNode.api", "https://rest-testnet.onflow.org") // grpc: https://access-testnet.onflow.org
     //.put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
-/*     .put(
+    /*.put(
       "discovery.authn.endpoint",
       "https://fcl-discovery.onflow.org/api/testnet/authn"
     ) */
     // local discovery
-    /*     .put("discovery.wallet", "http://localhost:3002/testnet/authn")
-    .put("discovery.authn.endpoint", "http://localhost:3002/api/testnet/authn") */
-    // staging discovery
-    .put(
-      "discovery.wallet",
-      "https://fcl-discovery-git-gsantos-wc-onflow.vercel.app/testnet/authn"
-    )
-    .put(
-      "discovery.authn.endpoint",
-      "https://fcl-discovery-git-gsantos-wc-onflow.vercel.app/api/testnet/authn"
-    )
-  /*.put("discovery.authn.include", [
-      "0x82ec283f88a62e65",
-      "0xead892083b3e2c6c",
-    ]) */
+    .put("discovery.wallet", "http://localhost:3002/testnet/authn")
+    .put("discovery.authn.endpoint", "http://localhost:3002/api/testnet/authn")
+    .put("discovery.authn.include", [
+        "0x82ec283f88a62e65",
+        "0xead892083b3e2c6c",
+    ])
   // mainnet
   // .put("flow.network", "mainnet")
   // .put("accessNode.api", "https://rest-mainnet.onflow.org")
