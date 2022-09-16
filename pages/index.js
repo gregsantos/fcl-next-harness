@@ -36,12 +36,15 @@ export default function Home() {
       <ul>{COMMANDS.map(renderCommand)}</ul>
       <div>
         {services?.map(service => (
-          <button
-            key={service.provider.address}
-            onClick={() => fcl.authenticate({ service })}
-          >
-            Login with {service.provider.name}
-          </button>
+          <>
+            <img src={service.provider.icon} style={{width: '50px', height: '50px'}} />
+            <button
+              key={service.provider.address}
+              onClick={() => fcl.authenticate({ service })}
+            >
+              Login with {service.provider.name}
+            </button>
+          </>
         ))}
       </div>
       <pre>{JSON.stringify({ currentUser, config }, null, 2)}</pre>
