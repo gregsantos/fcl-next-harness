@@ -22,6 +22,7 @@ fcl
   .put("app.detail.icon", "https://placekitten.com/g/200/200")
   .put("service.OpenID.scopes", "email")
   .put("fcl.accountProof.resolver", resolver)
+// storage override
 //.put("fcl.storage", LOCAL_STORAGE)
 
 if (USE_LOCAL) {
@@ -42,24 +43,21 @@ if (USE_LOCAL) {
     // testnet
     .put("flow.network", "testnet")
     .put("accessNode.api", "https://rest-testnet.onflow.org") // grpc: https://access-testnet.onflow.org
-    //.put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
-    /*.put(
+    .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
+    .put(
       "discovery.authn.endpoint",
       "https://fcl-discovery.onflow.org/api/testnet/authn"
-    ) */
-    // local discovery
-    .put("discovery.wallet", "http://localhost:3002/testnet/authn")
-    .put("discovery.authn.endpoint", "http://localhost:3002/api/testnet/authn")
+    )
     .put("discovery.authn.include", [
-        "0x82ec283f88a62e65",
-        "0xead892083b3e2c6c",
+      "0x82ec283f88a62e65",  // Dapper
+      "0x9d2e44203cb13051",  // Ledger
     ])
   // mainnet
   // .put("flow.network", "mainnet")
   // .put("accessNode.api", "https://rest-mainnet.onflow.org")
   // .put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
-  // Discovery API
   // .put("discovery.authn.endpoint","https://fcl-discovery.onflow.org/api/mainnet/authn")
+  // .put("discovery.authn.include", ["0xead892083b3e2c6c", "0xe5cd26afebe62781",])
   // Dapper Wallet
   // .put("discovery.wallet","https://staging.accounts.meetdapper.com/fcl/authn-restricted")
   // .put("discovery.wallet.method", "POP/RPC")

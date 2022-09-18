@@ -13,42 +13,6 @@ const WC_METADATA = {
   url: "https://flow.com/",
   icons: ["https://avatars.githubusercontent.com/u/62387156?s=280&v=4"],
 }
-const lilicoMobileWallet = {
-  f_type: "Service",
-  f_vsn: "1.0.0",
-  type: "authn",
-  method: "WC/RPC",
-  uid: "https://lilico.app",
-  endpoint: "flow_authn",
-  provider: {
-    address: "0x9a4a5f2e7de57741",
-    name: "Lilico Mobile",
-    icon: "/images/lilico.png",
-    description:
-      "A Mobile crypto wallet on Flow built for explorers, collectors, and gamers.",
-    color: "#FC814A",
-    supportEmail: "hi@lilico.app",
-    website: "https://link.lilico.app/wc",
-  },
-}
-
-const fclReactWallet = {
-  f_type: "Service",
-  f_vsn: "1.0.0",
-  type: "authn",
-  method: "WC/RPC",
-  uid: "https://flow-walletconnect-v2-react-wallet.vercel.app",
-  endpoint: "flow_authn",
-  provider: {
-    address: "0x12345678",
-    name: "FCL/WC React Wallet",
-    icon: "https://avatars.githubusercontent.com/u/37784886",
-    description: "React Wallet for FCL WalletConnect",
-    color: "#FC814A",
-    supportEmail: "",
-    website: "https://flow-walletconnect-v2-react-wallet.vercel.app",
-  },
-}
 
 const renderCommand = d => {
   return (
@@ -68,12 +32,11 @@ export default function Home() {
       const { FclWcServicePlugin, client } = await init({
         projectId: WC_PROJECT_ID,
         metadata: WC_METADATA,
-        // includeBaseWC: true,
-        /*wallets: [lilicoMobileWallet, fclReactWallet],
+        includeBaseWC: true,
+        wallets: [],
         sessionRequestHook: data => {
-          console.log(`Approve Session in your ${data.name} Mobile Wallet.`)
-        }, 
-        */
+          console.log("WC Request data", data)
+        },
       })
       fcl.pluginRegistry.add(FclWcServicePlugin)
     }
