@@ -4,6 +4,7 @@ import useConfig from "../hooks/use-config"
 import { useState, useEffect } from "react"
 import { COMMANDS } from "../cmds"
 import { init } from "@onflow/fcl-wc"
+import Image from "next/image"
 import "../flow/config"
 
 const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID
@@ -61,15 +62,17 @@ export default function Home() {
       <ul>{COMMANDS.map(renderCommand)}</ul>
       <div>
         {services?.map(service => (
-          <>
-            <img src={service.provider.icon} style={{width: '50px', height: '50px'}} />
-            <button
-              key={service.provider.address}
-              onClick={() => fcl.authenticate({ service })}
-            >
+          <span key={service.provider.address}>
+            <Image
+              src={service.provider.icon}
+              alt="Wallet Icon"
+              width={25}
+              height={25}
+            />
+            <button onClick={() => fcl.authenticate({ service })}>
               Login with {service.provider.name}
             </button>
-          </>
+          </span>
         ))}
       </div>
       <pre>{JSON.stringify({ currentUser, config }, null, 2)}</pre>

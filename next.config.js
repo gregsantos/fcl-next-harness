@@ -7,6 +7,9 @@ const nextConfig = {
   env: {
     FCL_CRYPTO_CONTRACT: process.env.FCL_CRYPTO_CONTRACT,
   },
+  images: {
+    domains: ["avatars.githubusercontent.com"],
+  },
 }
 
 module.exports = nextConfig
