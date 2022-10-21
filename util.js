@@ -3,3 +3,6 @@ export const nope = tag => d => (console.error(`Oh No!! [${tag}]`, d), d)
 export function serviceOfType(services = [], type) {
   return services.find(service => service.type === type)
 }
+
+export const success = q => `success - ${q}`
+export const fail = q => `fail - ${q}`
