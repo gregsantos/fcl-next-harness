@@ -41,16 +41,20 @@ export default function Home() {
       })
       fcl.pluginRegistry.add(FclWcServicePlugin)
     }
-    if (process.env.NEXT_PUBLIC_WC_PROJECT_ID) initAdapter()
+    if (
+      config &&
+      config.flow.network !== "local" &&
+      process.env.NEXT_PUBLIC_WC_PROJECT_ID
+    )
+      initAdapter()
   }, [])
 
   useEffect(() => {
     const fetchServices = async () =>
       await fcl.discovery.authn.subscribe(res => {
-        console.log("discovery api services", res)
         setServices(res.results)
       })
-    fetchServices()
+    if (config && config.discovery.authn.endpoint) fetchServices()
   }, [])
 
   useEffect(() => {

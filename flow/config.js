@@ -32,10 +32,10 @@ if (USE_LOCAL) {
     .put("flow.network", "local")
     .put("accessNode.api", "http://localhost:8888")
     // dev-wallet
-    // .put("discovery.wallet", "http://localhost:8701/fcl/authn")
-    // local discovery
-    .put("discovery.wallet", "http://localhost:3002/local/authn")
-    .put("discovery.authn.endpoint", "http://localhost:3002/api/local/authn")
+    .put("discovery.wallet", "http://localhost:8701/fcl/authn")
+  // local discovery
+  // .put("discovery.wallet", "http://localhost:3002/local/authn")
+  // .put("discovery.authn.endpoint", "http://localhost:3002/api/local/authn")
 } else {
   // prettier-ignore
   fcl
