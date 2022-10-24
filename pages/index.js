@@ -4,6 +4,19 @@ import "../flow/config"
 import { COMMANDS } from "../cmds"
 import useCurrentUser from "../hooks/use-current-user"
 import useConfig from "../hooks/use-config"
+import { useState, useEffect } from "react"
+import { COMMANDS } from "../cmds"
+import { init } from "@onflow/fcl-wc"
+import Image from "next/image"
+import "../flow/config"
+
+const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID
+const WC_METADATA = {
+  name: "FCL WalletConnect",
+  description: "FCL DApp for WalletConnect",
+  url: "https://flow.com/",
+  icons: ["https://avatars.githubusercontent.com/u/62387156?s=280&v=4"],
+}
 
 const renderCommand = (d, setStatus) => {
   return (
@@ -28,6 +41,22 @@ export default function Home() {
   const [status, setStatus] = useState(null)
 
   useEffect(() => {
+    const initAdapter = async () => {
+      const { FclWcServicePlugin, client } = await init({
+        projectId: WC_PROJECT_ID,
+        metadata: WC_METADATA,
+        includeBaseWC: true,
+        wallets: [],
+        sessionRequestHook: data => {
+          console.log("WC Request data", data)
+        },
+      })
+      fcl.pluginRegistry.add(FclWcServicePlugin)
+    }
+    initAdapter()
+  }, [])
+
+  useEffect(() => {
     const fetchServices = async () =>
       await fcl.discovery.authn.subscribe(res => {
         console.log("discovery api services", res)
@@ -46,12 +75,17 @@ export default function Home() {
       <pre>Status: {status ?? ""}</pre>
       <div>
         {services?.map(service => (
-          <button
-            key={service.provider.address}
-            onClick={() => fcl.authenticate({ service })}
-          >
-            Login with {service.provider.name}
-          </button>
+          <span key={service.provider.address}>
+            <Image
+              src={service.provider.icon}
+              alt="Wallet Icon"
+              width={25}
+              height={25}
+            />
+            <button onClick={() => fcl.authenticate({ service })}>
+              Login with {service.provider.name}
+            </button>
+          </span>
         ))}
       </div>
       <div style={{ marginTop: "12px" }}>
