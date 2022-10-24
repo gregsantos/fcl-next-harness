@@ -1,5 +1,5 @@
 import { query } from "@onflow/fcl"
-import { yup, nope } from "../util"
+import { success, fail } from "../util"
 
 export const LABEL = "Query 2 (args)"
 export const CMD = async () => {
@@ -14,6 +14,6 @@ export const CMD = async () => {
       arg("5", t.Int),
       arg("7", t.Int),
     ],
-  }).then(yup("Q-1"))
-    .catch(nope("Q-1"))
+  }).then(success(LABEL))
+  .catch(fail(LABEL))
 }

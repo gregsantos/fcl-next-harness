@@ -1,9 +1,9 @@
 import * as fcl from "@onflow/fcl"
-import { yup, nope } from "../util"
+import { success, fail } from "../util"
 
 export const LABEL = "Serialize"
 export const CMD = async () => {
-  const voucher = await fcl
+  return await fcl
     .serialize([
       fcl.transaction`
             transaction() {
@@ -17,6 +17,6 @@ export const CMD = async () => {
       fcl.authorizations([fcl.authz]),
       fcl.payer(fcl.authz),
     ])
-    .then(yup("US-1"))
-    .catch(nope("US-1"))
+    .then(success(LABEL))
+    .catch(fail(LABEL))
 }

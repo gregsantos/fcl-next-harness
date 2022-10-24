@@ -1,5 +1,6 @@
 import * as fcl from "@onflow/fcl"
 import { yup, nope, serviceOfType } from "../util"
+import { success, fail } from "../util"
 
 export const LABEL = "Log In"
 export const CMD = async () => {
@@ -33,5 +34,6 @@ export const CMD = async () => {
     })
     console.log("verified server:", await res.json())
   }
-  return res
+
+  return success(LABEL)(res)
 }
