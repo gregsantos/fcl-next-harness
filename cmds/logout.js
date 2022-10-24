@@ -5,8 +5,8 @@ export const LABEL = "Log Out"
 export const CMD = () => {
   try {
     unauthenticate()
-    return success(LABEL)
+    return success(LABEL)(null)
   } catch (e) {
-    return fail(LABEL)
+    return fail(LABEL)(e)
   }
 }

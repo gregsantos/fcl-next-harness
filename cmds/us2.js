@@ -20,10 +20,10 @@ export const CMD = async () => {
     return fcl.AppUtils.verifyUserSignatures(MSG, res, {
       fclCryptoContract,
     })
-      .then(() => success(LABEL))
-      .catch(() => fail(LABEL))
+      .then(success(LABEL))
+      .catch(fail(LABEL))
   } catch (error) {
     console.log(error)
-    return fail(LABEL)
+    return fail(LABEL)(error)
   }
 }

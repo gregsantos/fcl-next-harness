@@ -1,5 +1,4 @@
 import * as fcl from "@onflow/fcl"
-import { yup, nope } from "../util"
 import { success, fail } from "../util"
 
 export const LABEL = "Serialize"
@@ -18,6 +17,6 @@ export const CMD = async () => {
       fcl.authorizations([fcl.authz]),
       fcl.payer(fcl.authz),
     ])
-    .then(() => success(LABEL))
-    .catch(() => fail(LABEL))
+    .then(success(LABEL))
+    .catch(fail(LABEL))
 }

@@ -35,5 +35,5 @@ export const CMD = async () => {
     console.log("verified server:", await res.json())
   }
 
-  return success(LABEL)
+  return success(LABEL)(res)
 }

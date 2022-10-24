@@ -1,5 +1,4 @@
 import { mutate } from "@onflow/fcl"
-import { yup, nope } from "../util"
 import { success, fail } from "../util"
 
 export const LABEL = "Mutate 2 (args)"
@@ -23,6 +22,6 @@ export const CMD = async () => {
     ],
     limit: 50,
   })
-    .then(() => success(LABEL))
-    .catch(() => fail(LABEL))
+    .then(success(LABEL))
+    .catch(fail(LABEL))
 }

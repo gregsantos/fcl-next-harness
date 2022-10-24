@@ -4,5 +4,9 @@ export function serviceOfType(services = [], type) {
   return services.find(service => service.type === type)
 }
 
-export const success = q => `success - ${q}`
-export const fail = q => `fail - ${q}`
+export const success = tag => data => (
+  console.log(`${tag}`, data), `success - ${tag}`
+)
+export const fail = tag => data => (
+  console.error(`Oh No!! [${tag}]`, data), `fail - ${tag}`
+)
