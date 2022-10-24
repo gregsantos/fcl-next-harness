@@ -34,8 +34,8 @@ if (USE_LOCAL) {
     // dev-wallet
     .put("discovery.wallet", "http://localhost:8701/fcl/authn")
   // local discovery
-  //.put("discovery.wallet", "http://localhost:3002/testnet/authn")
-  //.put("discovery.authn.endpoint", "http://localhost:3002/api/testnet/authn")
+  // .put("discovery.wallet", "http://localhost:3002/local/authn")
+  // .put("discovery.authn.endpoint", "http://localhost:3002/api/local/authn")
 } else {
   // prettier-ignore
   fcl

@@ -12,8 +12,8 @@ import "../flow/config"
 
 const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID
 const WC_METADATA = {
-  name: "FCL WalletConnect",
-  description: "FCL DApp for WalletConnect",
+  name: "FCL Harness",
+  description: "FCL Harness dApp for Development and Testing",
   url: "https://flow.com/",
   icons: ["https://avatars.githubusercontent.com/u/62387156?s=280&v=4"],
 }
@@ -53,16 +53,20 @@ export default function Home() {
       })
       fcl.pluginRegistry.add(FclWcServicePlugin)
     }
-    initAdapter()
+    if (
+      config &&
+      config.flow.network !== "local" &&
+      process.env.NEXT_PUBLIC_WC_PROJECT_ID
+    )
+      initAdapter()
   }, [])
 
   useEffect(() => {
     const fetchServices = async () =>
       await fcl.discovery.authn.subscribe(res => {
-        console.log("discovery api services", res)
         setServices(res.results)
       })
-    fetchServices()
+    if (config && config.discovery.authn.endpoint) fetchServices()
   }, [])
 
   useEffect(() => {
