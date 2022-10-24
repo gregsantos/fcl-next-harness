@@ -4,7 +4,7 @@ import { success, fail } from "../util"
 
 export const LABEL = "Serialize"
 export const CMD = async () => {
-  const voucher = await fcl
+  return await fcl
     .serialize([
       fcl.transaction`
             transaction() {

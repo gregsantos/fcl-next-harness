@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <div>
       <ul>{COMMANDS.map(cmd => renderCommand(cmd, setStatus))}</ul>
-      <pre>Status: {status}</pre>
+      <pre>Status: {status ?? ""}</pre>
       <div>
         {services?.map(service => (
           <button
@@ -55,7 +55,7 @@ export default function Home() {
         ))}
       </div>
       <div style={{ marginTop: "12px" }}>
-        <label for="manual-wallet">
+        <label htmlFor="manual-wallet">
           Manually set "discovery.wallet" config:{" "}
         </label>
         <input ref={discoveryWalletInputRef} name="manual-wallet"></input>
