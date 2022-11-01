@@ -10,8 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@onflow/fcl": "latest",
+    "@onflow/fcl": "^1.3.2",
     "@onflow/fcl-wc": "^1.0.0",
+    "@onflow/transport-grpc": "1.1.2",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0"

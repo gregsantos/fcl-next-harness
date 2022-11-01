@@ -53,19 +53,19 @@ export default function Home() {
     }
     if (
       config &&
-      config.flow.network !== "local" &&
+      config["flow.network"] !== "local" &&
       process.env.NEXT_PUBLIC_WC_PROJECT_ID
     )
       initAdapter()
-  }, [])
+  }, [config])
 
   useEffect(() => {
     const fetchServices = async () =>
       await fcl.discovery.authn.subscribe(res => {
         setServices(res.results)
       })
-    if (config && config.discovery.authn.endpoint) fetchServices()
-  }, [])
+    if (config && config["discovery.authn.endpoint"]) fetchServices()
+  }, [config])
 
   useEffect(() => {
     require("../decorate")
