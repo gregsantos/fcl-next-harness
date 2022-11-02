@@ -4,6 +4,7 @@ import useConfig from "../hooks/use-config"
 import { useState, useEffect } from "react"
 import { COMMANDS } from "../cmds"
 import { init } from "@onflow/fcl-wc"
+import Loading from "./loading";
 import Image from "next/image"
 import "../flow/config"
 
@@ -15,18 +16,25 @@ const WC_METADATA = {
   icons: ["https://avatars.githubusercontent.com/u/62387156?s=280&v=4"],
 }
 
-const renderCommand = d => {
-  return (
-    <li key={d.LABEL}>
-      <button onClick={d.CMD}>{d.LABEL}</button>
-    </li>
-  )
-}
-
 export default function Home() {
   const currentUser = useCurrentUser()
   const config = useConfig()
   const [services, setServices] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
+
+  const renderCommand = (d) => {
+    return (
+      <li key={d.LABEL}>
+        <button onClick={() => clickHandler(d)}>{d.LABEL}</button>
+      </li>
+    );
+  };
+
+  async function clickHandler(d) {
+    setIsLoading(true);
+    await d.CMD();
+    setIsLoading(false);
+  }
 
   useEffect(() => {
     const initAdapter = async () => {
@@ -76,6 +84,7 @@ export default function Home() {
         ))}
       </div>
       <pre>{JSON.stringify({ currentUser, config }, null, 2)}</pre>
+      {isLoading ? <Loading/> : null}
     </div>
   )
 }
