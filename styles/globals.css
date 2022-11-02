@@ -38,6 +38,7 @@ a {
   border-width: 30px;
   border-radius: 50%;
   -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 .style-2 .loading-wheel {
   border-style: double;
