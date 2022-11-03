@@ -27,14 +27,14 @@ export default function Home() {
   const renderCommand = d => {
     return (
       <li key={d.LABEL}>
-        <button onClick={() => clickHandler(d)}>{d.LABEL}</button>
+        <button onClick={() => clickHandler(d.CMD)}>{d.LABEL}</button>
       </li>
     )
   }
 
-  async function clickHandler(d) {
+  async function clickHandler(fn, args = null) {
     setIsLoading(true)
-    await d.CMD()
+    await fn(args)
     setIsLoading(false)
   }
 
@@ -83,7 +83,7 @@ export default function Home() {
               width={25}
               height={25}
             />
-            <button onClick={() => fcl.authenticate({ service })}>
+            <button onClick={() => clickHandler(fcl.authenticate, { service })}>
               Login with {service.provider.name}
             </button>
           </span>
