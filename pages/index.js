@@ -5,7 +5,7 @@ import { COMMANDS } from "../cmds"
 import useCurrentUser from "../hooks/use-current-user"
 import useConfig from "../hooks/use-config"
 import { init } from "@onflow/fcl-wc"
-import Loading from "./loading";
+import Loading from "./loading"
 import Image from "next/image"
 import "../flow/config"
 
@@ -21,27 +21,26 @@ export default function Home() {
   const currentUser = useCurrentUser()
   const config = useConfig()
   const [services, setServices] = useState([])
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
   const discoveryWalletInputRef = useRef(null)
-  const [status, setStatus] = useState(null)
 
-  const renderCommand = (d) => {
+  const renderCommand = d => {
     return (
       <li key={d.LABEL}>
         <button onClick={() => clickHandler(d)}>{d.LABEL}</button>
       </li>
-    );
-  };
+    )
+  }
 
   async function clickHandler(d) {
-    setIsLoading(true);
-    await d.CMD();
-    setIsLoading(false);
+    setIsLoading(true)
+    await d.CMD()
+    setIsLoading(false)
   }
 
   useEffect(() => {
     const initAdapter = async () => {
-      const { FclWcServicePlugin, client } = await init({
+      const { FclWcServicePlugin } = await init({
         projectId: WC_PROJECT_ID,
         metadata: WC_METADATA,
         includeBaseWC: true,
@@ -74,8 +73,7 @@ export default function Home() {
 
   return (
     <div>
-      <ul>{COMMANDS.map(cmd => renderCommand(cmd, setStatus))}</ul>
-      <pre>Status: {status ?? ""}</pre>
+      <ul>{COMMANDS.map(cmd => renderCommand(cmd))}</ul>
       <div>
         {services?.map(service => (
           <span key={service.provider.address}>
@@ -93,12 +91,12 @@ export default function Home() {
       </div>
       <div style={{ marginTop: "12px" }}>
         <label htmlFor="manual-wallet">
-          Manually set "discovery.wallet" config:{" "}
+          {'Manually set "discovery.wallet" config:'}
         </label>
         <input ref={discoveryWalletInputRef} name="manual-wallet"></input>
         <button
-          onClick={async () =>
-            await fcl
+          onClick={() =>
+            fcl
               .config()
               .put("discovery.wallet", discoveryWalletInputRef?.current?.value)
           }
@@ -107,7 +105,7 @@ export default function Home() {
         </button>
       </div>
       <pre>{JSON.stringify({ currentUser, config }, null, 2)}</pre>
-      {isLoading ? <Loading/> : null}
+      {isLoading ? <Loading /> : null}
     </div>
   )
 }
