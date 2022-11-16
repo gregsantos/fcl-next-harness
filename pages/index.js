@@ -53,7 +53,6 @@ export default function Home() {
       fcl.pluginRegistry.add(FclWcServicePlugin)
     }
 
-    console.log("running plugin");
     if (
       !isPluginAdded &&
       config &&
