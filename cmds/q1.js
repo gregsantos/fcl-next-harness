@@ -4,7 +4,7 @@ import { success, fail } from "../util"
 export const LABEL = "Query 1 (no args)"
 export const CMD = async () => {
   // prettier-ignore
-  return query({
+  query({
     cadence: `
       pub fun main(): Int {
         return 7
