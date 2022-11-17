@@ -23,6 +23,7 @@ export default function Home() {
   const [services, setServices] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const discoveryWalletInputRef = useRef(null)
+  const [isPluginAdded, setIsPluginAdded] = useState(false)
 
   const renderCommand = d => {
     return (
@@ -51,12 +52,16 @@ export default function Home() {
       })
       fcl.pluginRegistry.add(FclWcServicePlugin)
     }
+
     if (
+      !isPluginAdded &&
       config &&
       config["flow.network"] !== "local" &&
       process.env.NEXT_PUBLIC_WC_PROJECT_ID
-    )
+    ) {
       initAdapter()
+      setIsPluginAdded(true)
+    }
   }, [config])
 
   useEffect(() => {
